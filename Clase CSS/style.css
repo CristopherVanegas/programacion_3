@@ -1,0 +1,21 @@
+h1{
+    background-color: #adff2f;
+    color: #b32821;
+}
+p{
+    background-color: antiquewhite;
+    color: black;
+    font-size:  32px;
+    word-spacing: 20px;
+}
+.parrafo_par{
+    background-color: #f5deb3;
+}
+
+.parrafo_impar{
+    background-color: #fad6a5;
+    font-size: 50px;
+}
+#parrafo_principal{
+    background-color: cadetblue;
+}

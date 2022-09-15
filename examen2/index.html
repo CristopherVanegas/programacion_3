@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+
+    <title>Ajax</title>
+</head>
+<body>
+
+
+    <div class="container">
+
+        <div class="row">
+
+            <form class="row g-3">
+                <!-- <div class="col-auto">
+                  <label for="cantidad-usuario" class="visually-hidden">Cantidad de Usuarios</label>
+                  <input type="text" placeholder="Ingrese un numero" class="form-control-plaintext" id="cantidad-usuario" > -->
+                  <!-- readonly -->
+                  <!-- value="email@example.com" -->
+                <!-- </div> -->
+                <!-- <div class="col-auto">
+                  <label for="inputPassword2" class="visually-hidden">Password</label>
+                  <input type="password" class="form-control" id="inputPassword2" placeholder="Password">
+                </div> -->
+                <div class="col-auto">
+                  <button id="btn-cargar-usuarios" type="button" class="btn btn-primary mb-3">Mostrar</button>
+                </div>
+                <!-- submit -->
+              </form>
+
+        </div>
+
+        <div id="listado-usuarios">
+
+        </div>
+
+    </div>
+    
+</body>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+
+<!-- ESTO ES AJAX -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+<script type="text/javascript">
+
+    $("#btn-cargar-usuarios").click(function(){
+        var cantidadUsuarios = $("#cantidad-usuario").val();
+        $.ajax({
+            url:'https://random-data-api.com/api//users/random_user?size=10',
+            dataType: 'json',
+            success: function(result){
+                // console.log(result);
+                var listadoUsuarios = $("#listado-usuarios");
+                // listadoUsuarios.html("");
+                listadoUsuarios.empty();
+
+                for (var i = 0; i < result.length; i++) {
+                    listadoUsuarios.append(`<table class="table table-danger">
+                                                <thead>
+                                                    <tr>
+                                                    
+                                                    <th scope="col">Correo</th>
+                                                    <th scope="col">Apellido</th>
+                                                    <th scope="col">Nombre</th>
+                                                    <th scope="col">Imagen</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                    <td>${result[i].email}</td>
+                                                    <td>${result[i].last_name}</td>
+                                                    <td>${result[i].first_name}</td>
+                                                    <td><img src="${result[i].avatar}" width="60" height="54"></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>`);
+                    
+                }
+            }
+        });
+    });
+    
+   
+
+</script>
+
+
+
+</html>

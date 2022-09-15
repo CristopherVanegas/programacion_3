@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+
+        <title>Ajax</title>
+    </head>
+    <body>
+
+        
+
+
+        <div class="container">
+
+
+            <br>
+
+            <nav >
+                <div >
+                <h1 >
+                    <img src="https://thumbs.dreamstime.com/b/logotipo-rojo-y-blanco-simple-de-pokemon-eps-74567695.jpg" alt="" width="60" height="54" class="d-inline-block align-text-top">
+                    Pokemon
+                </h1>
+                </div>
+            </nav>
+
+
+            <div class="row">
+
+                <form class="row g-3">
+                    <div class="col-auto">
+                    <!-- <label for="cantidad-usuario" class="visually-hidden">Cantidad de Usuarios</label> -->
+                    <input type="text" placeholder="Busca un pokemon" class="form-control-plaintext" id="cantidad-usuario" >
+                    <!-- readonly -->
+                    <!-- value="email@example.com" -->
+                    </div>
+                    <!-- <div class="col-auto">
+                    <label for="inputPassword2" class="visually-hidden">Password</label>
+                    <input type="password" class="form-control" id="inputPassword2" placeholder="Password">
+                    </div> -->
+                    <div class="col-auto">
+                    <button id="btn-cargar-usuarios" type="button" class="btn btn-danger mb-3">Aceptar</button>
+                    </div>
+                    <!-- submit -->
+                </form>
+
+            </div>
+
+            <div class="row" id="listado-usuarios">
+                <div id="texto" class="col-8"></div>
+                <div id="imagen" class="col-3"></div>
+
+            </div>
+
+        </div>
+        
+    </body>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+
+    <!-- ESTO ES AJAX -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+
+    <!-- CODIGO EN JAVA -->
+
+    <script type="text/javascript">
+
+        $("#btn-cargar-usuarios").click(function(){
+            var cantidadUsuarios = $("#cantidad-usuario").val();
+            $.ajax({
+                url:'https://pokeapi.co/api/v2/pokemon/' + cantidadUsuarios,
+                dataType: 'json',
+                success: function(result){
+                    // console.log(result);
+                    var listadoUsuarios = $("#texto");
+                    // listadoUsuarios.html("");
+                    listadoUsuarios.empty();
+
+                    for (var i = 0; i < result.forms.length; i++) {
+                        listadoUsuarios.append(`<table class="table table-danger">
+                                                <thead>
+                                                    <tr>
+                                                    
+                                                    <th scope="col">Nombre</th>
+                                                    <th scope="col">URL</th>
+                                                    <th scope="col">Imagen</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                    <td>${result.forms[i].name}</td>
+                                                    
+                                                    <td><button id="button-img" data-target="${result.forms[i].url}">Ver mas</button></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>`);
+                        
+                    }
+                }
+            });
+        });
+
+
+        $(document).click(function(e){
+
+            var btn = e.target.closest('#button-img');
+            if(!btn) return;
+
+            var url = btn.dataset.target;
+
+            // var imgPockemon = $("#name-img").val();
+            $.ajax({
+                url,
+                dataType: 'json',
+                success: function(resu){
+                    var mostrarImagen =  $("#imagen");
+                        mostrarImagen.empty();
+                        mostrarImagen.append(
+
+                        `<img src="${resu.sprites.back_default}"/>
+                        <img src="${resu.sprites.front_default}"/>
+
+                        `);
+                }
+
+            });
+
+        });
+    </script>
+
+
+
+    </html>

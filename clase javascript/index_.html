@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript</title>
+</head>
+<body>
+    
+</body>
+
+<script type="text/javascript">
+    //Comentario de linea
+    /*
+        Comentario de bloque
+    */
+
+    function suma(operando1, operando){
+        // var total = operando1 + operando;
+        // console.log(total);
+        return operando1 + operando;
+    }
+
+    function resta(operando1, operando){
+        // var total = operando1 + operando;
+        // console.log(total);
+        return operando1 - operando;
+    }
+
+    function multiplicacion(operando1, operando){
+        // var total = operando1 + operando;
+        // console.log(total);
+        return operando1 * operando;
+    }
+
+    function division(operando1, operando){
+        // var total = operando1 + operando;
+        // console.log(total);
+        return operando1 / operando;
+    }
+
+
+    // console.log(nombre, typeof nombre)
+    var nombre = `Michael Parrales`;
+    nombre = 12;
+    var estaSoltero = false;
+
+    var estudiante = { 'nombre' : "Michael", 'edad´': 21 };
+
+    var arreglo = [12, "Test", false, estudiante];
+
+    //console.log(nombre, typeof nombre);
+   // console.log(arreglo, typeof arreglo);
+
+//    console.log(suma(12,3));
+//    console.log(resta(12,3));
+
+//    console.log(multiplicacion(12,3));
+//    console.log(division(12,3));
+
+   function calculadora(calculo, operacion1, operando){
+    return calculo(operacion1,operando);
+   }
+
+   console.log(calculadora(suma,12,4));
+   console.log(calculadora(resta,12,4));
+   console.log(calculadora(multiplicacion,12,4));
+   console.log(calculadora(division,12,4));
+
+   setTimeout(function(){
+    alert("Hey!!!")
+   },3000);
+
+   function saludo(nombre){
+    return "hola " + nombre;
+   }
+
+   console.log(saludo("Antonio"));
+
+   for(var i=0;i<arreglo; i++){
+    console.log(arreglo[i]);
+   }
+
+
+   console.log(document);   
+
+
+
+    // alert(nombre);
+
+
+
+</script>
+</html>

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style type="text/css">
+
+        .par{
+            background-color: magenta;
+        }
+
+        .impar{
+            background-color: coral;
+        }
+
+
+
+    </style>
+
+</head>
+<body>
+    
+
+    <form action="controlador.php" method="POST">
+
+        <div>
+              <label>Cedula
+
+                <input type="text" name="cedula" id="cedula" placeholder="098888888888" required autocomplete="off">
+
+              </label>
+        <!-- <input type="number" name="cedula" id="cedula" autocomplete="off"> -->
+       
+        </div>
+
+
+        <div>
+            <label for="nombre">Nombre</label>
+      <!-- <input type="number" name="cedula" id="cedula" autocomplete="off"> -->
+      <input type="text" name="nombre" id="nombre" autocomplete="off">
+      </div>
+      
+        <div>
+            <label for="">Correo</label>
+        <input type="email" name="correo" id="cedula" readonly value="persona@gmail.com" autocomplete="off">
+        </div>
+
+        <div>
+            <label for="">Contraseña</label>
+        <input type="password" name="clave" id="clave" autocomplete="off">
+        </div>
+
+
+        <div>
+            <label for="">Foto</label>
+        <input type="file" name="foto" id="foto" autocomplete="off">
+        </div>
+
+
+        <div>
+
+            <label for="">Plan: </label>
+
+             <select  name="plam"  required id="">
+                <option selected disabled  value="">Seleccione</option>
+                <option value="1">Plan 1</option>
+                <option value="2">Plan 2</option>
+                <option value="3">Plan 3</option>
+                <option value="4">Plan 4</option>
+             </select>
+
+        </div>
+
+
+        
+
+        <div>
+            <label for="">Observacion</label>
+            <textarea name="Observacion" id="" cols="30" rows="10"></textarea>
+        </div>
+
+
+        <br>
+
+        <div>
+            <input type="submit" value="Enviar"></input>
+        </div>
+        
+    </form>
+
+
+    <div>
+
+        <!-- <button onclick="ocultarPares()">Aceptar</button> -->
+        <button id="ocultarPares">Aceptar</button>
+
+        <p class="impar">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat excepturi incidunt nisi repellat ea illum doloribus blanditiis voluptatum atque odit repellendus qui ab recusandae aliquid vero aperiam corrupti, maxime rerum.</p>
+
+        <p class="par">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat excepturi incidunt nisi repellat ea illum doloribus blanditiis voluptatum atque odit repellendus qui ab recusandae aliquid vero aperiam corrupti, maxime rerum.</p>
+
+        <p class="impar">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat excepturi incidunt nisi repellat ea illum doloribus blanditiis voluptatum atque odit repellendus qui ab recusandae aliquid vero aperiam corrupti, maxime rerum.</p>
+        
+        <p class="par">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat excepturi incidunt nisi repellat ea illum doloribus blanditiis voluptatum atque odit repellendus qui ab recusandae aliquid vero aperiam corrupti, maxime rerum.</p>
+
+        <p class="impar">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat excepturi incidunt nisi repellat ea illum doloribus blanditiis voluptatum atque odit repellendus qui ab recusandae aliquid vero aperiam corrupti, maxime rerum.</p>
+        
+        <p class="par">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat excepturi incidunt nisi repellat ea illum doloribus blanditiis voluptatum atque odit repellendus qui ab recusandae aliquid vero aperiam corrupti, maxime rerum.</p>
+    </div>
+
+
+</body>
+
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+
+
+<script type="text/javascript" >
+
+    function ocultarPares(){
+        $(".par").hide();
+    }
+
+    $("#ocultarPares").click(ocultarPares);  //identificacion
+
+
+    $(document).ready(function(){
+        console.log(document.getElementsByTagName("input"));
+        console.log($("input").val());
+    });
+</script>
+</html>
+
+
+<!-- name se envia al navegador -->
+<!-- se envia del lado del javascript getelementbyid : ID -->
